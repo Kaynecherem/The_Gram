@@ -4,6 +4,7 @@ import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -28,4 +29,23 @@ fun UserInputField(
         keyboardOptions = keyboardOptions,
         modifier = modifier
     )
+}
+
+@Composable
+fun UserButton(
+    onValueChange : () -> Unit,
+    modifier : Modifier = Modifier,
+    enabled : Boolean = true,
+    text : String,
+    colors : ButtonColors
+) {
+    Button(
+        onClick = onValueChange,
+        modifier = modifier,
+        enabled = enabled,
+        colors = colors
+    ) {
+        Text(text = text)
+
+    }
 }

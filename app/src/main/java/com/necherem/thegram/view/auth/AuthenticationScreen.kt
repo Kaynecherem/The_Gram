@@ -14,10 +14,9 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -29,6 +28,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.necherem.thegram.R
+import com.necherem.thegram.elements.UserButton
 import com.necherem.thegram.elements.UserInputField
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -94,19 +94,13 @@ fun AuthenticationScreen(
                     .padding(bottom = 32.dp)
                     .fillMaxWidth()
             )
-            Button(
-                onClick = { /*TODO*/ },
+            UserButton(
+                onValueChange = { /*TODO*/ },
+                text = "Log in",
                 modifier = modifier
-                    .fillMaxWidth()
-                    .background(Color.Blue)
-            ) {
-                Text(
-                    text = "Log in",
-                    modifier = modifier,
-                    color = Color.White
-                    )
-            }
-
+                    .fillMaxWidth(),
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF2b4ad6)),
+            )
         }
 
 
