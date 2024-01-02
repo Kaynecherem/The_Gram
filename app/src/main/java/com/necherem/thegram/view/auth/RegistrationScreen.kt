@@ -44,19 +44,22 @@ fun RegistrationScreen() {
         verticalArrangement = Arrangement.SpaceBetween,
         modifier = Modifier
             .padding(horizontal = 16.dp)
+            .padding(top = 24.dp)
     ) {
         Icon(painter = painterResource(
             id = R.drawable.ic_keyboard_backspace),
             contentDescription = null,
             modifier = Modifier
                 .align(Alignment.Start)
+                .padding(bottom = 24.dp)
         )
-        FullName()
+        //FullName()
         //Password()
-        //SaveLoginInfo()
+        SaveLoginInfo()
     }
 
 }
+
 
 @Composable
 fun FullName(
@@ -142,8 +145,7 @@ fun Password(
     ) {
         Column(
             modifier = modifier
-                .fillMaxWidth()
-                .padding(all = 12.dp),
+                .fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(space = 8.dp)
         ) {
@@ -176,7 +178,8 @@ fun Password(
                 modifier = Modifier
                     .padding(bottom = 8.dp)
                     .fillMaxWidth(),
-                visualTransformation = PasswordVisualTransformation(mask = stringToChar)
+                visualTransformation = PasswordVisualTransformation(mask = stringToChar),
+                trailingIcon = R.drawable.ic_visibility_off
             )
             UserFilledButton(
                 onValueChange = { /*TODO*/ },

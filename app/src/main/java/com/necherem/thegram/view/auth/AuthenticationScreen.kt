@@ -21,8 +21,8 @@ fun AuthenticationScreen(
         }
     }
     Card {
-        LoginScreen()
-        //RegistrationScreen()
+        //LoginScreen()
+        RegistrationScreen()
     }
 }
 

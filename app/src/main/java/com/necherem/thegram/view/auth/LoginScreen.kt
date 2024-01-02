@@ -69,6 +69,9 @@ fun LoginScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(space = 8.dp)
         ) {
+            var passString = "o"
+            var stringToChar: Char = passString[0]
+
             UserInputField(
                 label = R.string.username_email_or_mobile_number,
                 keyboardOptions = KeyboardOptions(
@@ -92,7 +95,8 @@ fun LoginScreen(
                 modifier = Modifier
                     .padding(bottom = 8.dp)
                     .fillMaxWidth(),
-                visualTransformation = PasswordVisualTransformation()
+                visualTransformation = PasswordVisualTransformation(mask = stringToChar),
+                trailingIcon = R.drawable.ic_visibility_off
             )
             UserFilledButton(
                 onValueChange = { /*TODO*/ },
