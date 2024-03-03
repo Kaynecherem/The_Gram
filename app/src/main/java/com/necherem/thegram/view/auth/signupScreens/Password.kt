@@ -1,4 +1,4 @@
-package com.necherem.thegram.view.auth.views
+package com.necherem.thegram.view.auth.signupScreens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement

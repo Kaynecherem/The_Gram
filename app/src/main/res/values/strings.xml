@@ -5,4 +5,5 @@
     <string name="password">Password</string>
     <string name="full_name">Full name</string>
     <string name="save_login_info_description">We\'ll save the login info for your new account, so you won\'t need to enter it next time you log in.</string>
+    <string name="username">Username</string>
 </resources>

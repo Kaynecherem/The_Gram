@@ -1,4 +1,4 @@
-package com.necherem.thegram.view.auth.views
+package com.necherem.thegram.view.auth.signupScreens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -9,40 +9,32 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.necherem.thegram.R
+import com.necherem.thegram.elements.DateInput
 import com.necherem.thegram.elements.DisplayText
 import com.necherem.thegram.elements.UserFilledButton
-import com.necherem.thegram.elements.UserInputField
 import com.necherem.thegram.elements.UserTextButton
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FullName(
+fun Birthday(
     modifier: Modifier = Modifier
 ) {
-    var fullName by remember{ mutableStateOf("") }
     Column(
         modifier = Modifier
             .background(Color.Transparent)
             .fillMaxSize()
             .statusBarsPadding()
-            .padding(top = 24.dp)
             .verticalScroll(rememberScrollState())
             .safeDrawingPadding(),
         verticalArrangement = Arrangement.SpaceBetween
@@ -54,22 +46,25 @@ fun FullName(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(space = 8.dp)
         ) {
+            var passString = "&"
+            var stringToChar: Char = passString[0]
             DisplayText(
-                text = "What is your name?",
+                text = "What's your birthday?",
                 color = MaterialTheme.colorScheme.onBackground,
                 modifier = modifier
                     .align(Alignment.Start),
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold
             )
-            UserInputField(
-                label = R.string.full_name,
-                keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Email,
-                    imeAction = ImeAction.Next
-                ),
-                value = fullName,
-                onValueChange = { fullName = it },
+            //Instruction for setting up password
+            DisplayText(
+                text = "Use your own birthday, even if this account is for a business, a pet or something else. No one will see this unless you choose to share it.",
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = modifier
+                    .align(Alignment.Start),
+                fontSize = 14.sp
+            )
+            DateInput(
                 modifier = Modifier
                     .padding(bottom = 8.dp)
                     .fillMaxWidth()
@@ -101,6 +96,6 @@ fun FullName(
 
 @Preview
 @Composable
-fun FullNamePreview() {
-    FullName()
+fun BirthdayPreview() {
+    Birthday()
 }

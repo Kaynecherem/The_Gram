@@ -1,4 +1,4 @@
-package com.necherem.thegram.view.auth.views
+package com.necherem.thegram.view.auth.signupScreens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -11,15 +11,7 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.DatePicker
-import androidx.compose.material3.DatePickerColors
-import androidx.compose.material3.DatePickerDefaults
-import androidx.compose.material3.DatePickerFormatter
-import androidx.compose.material3.DatePickerState
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -31,7 +23,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -42,7 +33,7 @@ import com.necherem.thegram.elements.UserInputField
 import com.necherem.thegram.elements.UserTextButton
 
 @Composable
-fun Birthday(
+fun Username(
     modifier: Modifier = Modifier
 ) {
     var createPassword by remember{ mutableStateOf("") }
@@ -66,7 +57,7 @@ fun Birthday(
             var passString = "&"
             var stringToChar: Char = passString[0]
             DisplayText(
-                text = "What's your birthday?",
+                text = "Enter Username",
                 color = MaterialTheme.colorScheme.onBackground,
                 modifier = modifier
                     .align(Alignment.Start),
@@ -75,25 +66,23 @@ fun Birthday(
             )
             //Instruction for setting up password
             DisplayText(
-                text = "Use your own birthday, even if this account is for a business, a pet or something else. No one will see this unless you choose to share it.",
+                text = "Add a username or use our suggestion. You can change this at any time",
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = modifier
                     .align(Alignment.Start),
                 fontSize = 14.sp
             )
             UserInputField(
-                label = R.string.password,
+                label = R.string.username,
                 keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Password,
-                    imeAction = ImeAction.Done
+                    keyboardType = KeyboardType.Text,
+                    imeAction = ImeAction.Next
                 ),
                 value = createPassword,
                 onValueChange = { createPassword = it },
                 modifier = Modifier
                     .padding(bottom = 8.dp)
-                    .fillMaxWidth(),
-                visualTransformation = PasswordVisualTransformation(mask = stringToChar),
-                trailingIcon = R.drawable.ic_visibility_off
+                    .fillMaxWidth()
             )
             UserFilledButton(
                 onValueChange = { /*TODO*/ },
@@ -120,44 +109,8 @@ fun Birthday(
     }
 }
 
-@ExperimentalMaterial3Api
-@Composable
-fun DatePicker(
-    state: DatePickerState,
-    modifier: Modifier = Modifier,
-    dateFormatter: DatePickerFormatter = remember { DatePickerDefaults.dateFormatter() },
-    title: (@Composable () -> Unit)? = {
-        DatePickerDefaults.DatePickerTitle(
-            displayMode = state.displayMode,
-            modifier = Modifier.padding()
-        )
-    },
-    headline: (@Composable () -> Unit)? = {
-        DatePickerDefaults.DatePickerHeadline(
-            selectedDateMillis = state.selectedDateMillis,
-            displayMode = state.displayMode,
-            dateFormatter = dateFormatter,
-            modifier = Modifier.padding()
-        )
-    },
-    showModeToggle: Boolean = true,
-    colors: DatePickerColors = DatePickerDefaults.colors()
-): Unit {
-    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-        // Pre-select a date for January 4, 2020
-        val datePickerState = rememberDatePickerState(initialSelectedDateMillis = 1578096000000)
-        DatePicker(state = datePickerState, modifier = Modifier.padding(16.dp))
-
-        Text(
-            "Selected date timestamp: ${datePickerState.selectedDateMillis ?: "no selection"}",
-            modifier = Modifier.align(Alignment.CenterHorizontally)
-        )
-    }
-}
-
-
 @Preview
 @Composable
-fun BirthdayPreview() {
-    Birthday()
+fun UsernamePreview() {
+    Username()
 }

@@ -5,7 +5,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material3.Surface
 import com.necherem.thegram.ui.theme.TheGramTheme
-import com.necherem.thegram.view.auth.AuthenticationScreen
+import com.necherem.thegram.view.reel.AllReels
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -14,7 +15,7 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(
                 ) {
-                    AuthenticationScreen()
+                    AllReels()
                 }
             }
         }
