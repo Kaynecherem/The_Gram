@@ -55,7 +55,7 @@ fun RegistrationScreen() {
         )
         //FullName()
         //Password()
-        SaveLoginInfo()
+        //SaveLoginInfo()
     }
 
 }
