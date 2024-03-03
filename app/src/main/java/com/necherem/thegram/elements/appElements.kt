@@ -4,8 +4,11 @@ import android.widget.DatePicker
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
@@ -26,6 +29,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -155,15 +159,35 @@ fun DisplayText(
     )
 }
 
-
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DateInput(
-    modifier: Modifier = Modifier
+fun ColoredIcon(
+    icon: ImageVector,
+    color: Color,
+    modifier : Modifier = Modifier
 ) {
-    val state = rememberDatePickerState(initialDisplayMode = DisplayMode.Input)
-    DatePicker(state = state, modifier = Modifier.padding(16.dp))
+    Icon(
+        imageVector = icon,
+        contentDescription = null,
+        tint = color,
+        modifier = modifier
+    )
 }
+
+@Composable
+fun ReelUpload(
+    resourceId: Int,
+    contentDescription: String,
+    modifier: Modifier = Modifier.fillMaxWidth(), // Optional default modifier
+) {
+    Image(
+        painter = painterResource(resourceId),
+        contentDescription = contentDescription,
+        modifier = modifier
+    )
+}
+
+
+
 @Preview
 @Composable
 fun TextInputPreview() {

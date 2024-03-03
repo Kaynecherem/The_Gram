@@ -278,25 +278,25 @@ fun SaveLoginInfo(
     }
 }
 
-@Preview
-@Composable
-fun RegistrationScreenPreview() {
-    RegistrationScreen()
-}
-@Preview
-@Composable
-fun FullNamePreview() {
-    FullName()
-}
-
-@Preview
-@Composable
-fun PasswordPreview() {
-    Password()
-}
-
-@Preview
-@Composable
-fun SaveLoginPreview() {
-    SaveLoginInfo()
-}
+//@Preview
+//@Composable
+//fun RegistrationScreenPreview() {
+//    RegistrationScreen()
+//}
+//@Preview
+//@Composable
+//fun FullNamePreview() {
+//    FullName()
+//}
+//
+//@Preview
+//@Composable
+//fun PasswordPreview() {
+//    Password()
+//}
+//
+//@Preview
+//@Composable
+//fun SaveLoginPreview() {
+//    SaveLoginInfo()
+//}
