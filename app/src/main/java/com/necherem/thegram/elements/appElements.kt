@@ -177,7 +177,7 @@ fun ColoredIcon(
 fun ReelUpload(
     resourceId: Int,
     contentDescription: String,
-    modifier: Modifier = Modifier.fillMaxWidth(), // Optional default modifier
+    modifier: Modifier = Modifier.fillMaxSize(), // Optional default modifier
 ) {
     Image(
         painter = painterResource(resourceId),

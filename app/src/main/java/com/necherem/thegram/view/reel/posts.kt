@@ -1,29 +1,22 @@
 package com.necherem.thegram.view.reel
 
-import android.media.ImageReader
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -54,7 +47,7 @@ fun AllReels(modifier: Modifier = Modifier) {
 
             DisplayText(
                 text = "Reels",
-                color = MaterialTheme.colorScheme.secondary,
+                color = MaterialTheme.colorScheme.primary,
                 modifier = modifier,
                 fontSize = 32.sp,
                 fontWeight = FontWeight.ExtraBold
@@ -68,8 +61,9 @@ fun AllReels(modifier: Modifier = Modifier) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .wrapContentHeight()
-//                .background(Color.Green)
+                .height(1350.dp)
+                .background(MaterialTheme.colorScheme.surface)
+                .padding(4.dp)
 //                .border(BorderStroke(width = 2.dp, color = Color.Red))
 
         ) {
@@ -77,6 +71,64 @@ fun AllReels(modifier: Modifier = Modifier) {
                 resourceId = R.drawable.my_pic,
                 contentDescription = "null"
             )
+
+            @Composable
+            fun FloatingButtons(
+                modifier: Modifier = Modifier
+            ) {
+                Column(
+                    verticalArrangement = Arrangement.Bottom,
+                    modifier = Modifier
+                        .wrapContentHeight()
+                        .padding(bottom = 140.dp, end = 8.dp)
+                        .align(Alignment.BottomEnd)
+                ) {
+                    val icLike = ImageVector.vectorResource(R.drawable.like)
+                    val icComment = ImageVector.vectorResource(R.drawable.comment)
+                    val icSend = ImageVector.vectorResource(R.drawable.send)
+                    val icMoreVert = ImageVector.vectorResource(R.drawable.more_vert)
+                    Column {
+                        ColoredIcon(icLike, MaterialTheme.colorScheme.primary, modifier.size(32.dp))
+                        DisplayText(
+                            text = "362k",
+                            color = MaterialTheme.colorScheme.secondary,
+                            modifier = modifier,
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Normal
+                        )
+                    }
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Column {
+                        ColoredIcon(
+                            icComment,
+                            MaterialTheme.colorScheme.primary,
+                            modifier.size(32.dp)
+                        )
+                        DisplayText(
+                            text = "2,665",
+                            color = MaterialTheme.colorScheme.secondary,
+                            modifier = modifier,
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Normal
+                        )
+                    }
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Column {
+                        ColoredIcon(icSend, MaterialTheme.colorScheme.primary, modifier.size(32.dp))
+                        DisplayText(
+                            text = "362k",
+                            color = MaterialTheme.colorScheme.secondary,
+                            modifier = modifier,
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Normal
+                        )
+                    }
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Column {
+                        ColoredIcon(icMoreVert, MaterialTheme.colorScheme.onPrimaryContainer, modifier.size(32.dp))
+                    }
+                }
+            }
         }
     }
 }
