@@ -68,9 +68,11 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
-    //lottie animation dependency
+    //lottie
     implementation("com.airbnb.android:lottie:6.3.0")
 
     implementation ("androidx.compose.material3:material3:1.3.0-alpha01")
+    //Navigation
+    implementation ("androidx.navigation:navigation-compose:2.7.7")
 
 }

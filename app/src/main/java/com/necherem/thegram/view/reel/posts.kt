@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -86,7 +85,7 @@ fun AllReels(modifier: Modifier = Modifier) {
                     val icLike = ImageVector.vectorResource(R.drawable.like)
                     val icComment = ImageVector.vectorResource(R.drawable.comment)
                     val icSend = ImageVector.vectorResource(R.drawable.send)
-                    val icMoreVert = ImageVector.vectorResource(R.drawable.more_vert)
+                    val icMoreVert = ImageVector.vectorResource(R.drawable.ic_dot_menu)
                     Column {
                         ColoredIcon(icLike, MaterialTheme.colorScheme.primary, modifier.size(32.dp))
                         DisplayText(
