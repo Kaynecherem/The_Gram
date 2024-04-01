@@ -1,4 +1,6 @@
 package com.necherem.thegram.view.nav
 
-class AuthNavScreen {
+sealed class AuthNavScreen(val route: String) {
+    object Register : RegNavScreen("register")
+    object Login : RegNavScreen("login")
 }

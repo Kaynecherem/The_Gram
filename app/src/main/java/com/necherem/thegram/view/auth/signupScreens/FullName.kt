@@ -20,20 +20,24 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.necherem.thegram.R
 import com.necherem.thegram.elements.DisplayText
 import com.necherem.thegram.elements.UserFilledButton
 import com.necherem.thegram.elements.UserInputField
 import com.necherem.thegram.elements.UserTextButton
+import com.necherem.thegram.view.nav.AuthNavScreen
+import com.necherem.thegram.view.nav.RegNavScreen
 
 @Composable
 fun FullName(
+    navController: NavController,
     modifier: Modifier = Modifier
 ) {
     var fullName by remember{ mutableStateOf("") }
@@ -49,7 +53,7 @@ fun FullName(
 
     ) {
         Column(
-            modifier = modifier
+            modifier = Modifier
                 .fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(space = 8.dp)
@@ -57,7 +61,7 @@ fun FullName(
             DisplayText(
                 text = "What is your name?",
                 color = MaterialTheme.colorScheme.onBackground,
-                modifier = modifier
+                modifier = Modifier
                     .align(Alignment.Start),
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold
@@ -75,9 +79,11 @@ fun FullName(
                     .fillMaxWidth()
             )
             UserFilledButton(
-                onValueChange = { /*TODO*/ },
+                onValueChange = {
+                    navController.navigate(RegNavScreen.Password.route)
+                },
                 text = "Next",
-                modifier = modifier
+                modifier = Modifier
                     .fillMaxWidth(),
             )
         }
@@ -89,18 +95,14 @@ fun FullName(
             verticalArrangement = Arrangement.spacedBy(space = 8.dp)
         ) {
             UserTextButton(
-                onValueChange = { /*TODO*/ },
-                text = "Create new account",
+                onValueChange = {
+                    navController.navigate(AuthNavScreen.Login.route)
+                                },
+                text = stringResource(R.string.already_have_an_account),
                 textColor = MaterialTheme.colorScheme.primary,
                 modifier = modifier
                     .fillMaxWidth()
             )
         }
     }
-}
-
-@Preview
-@Composable
-fun FullNamePreview() {
-    FullName()
 }

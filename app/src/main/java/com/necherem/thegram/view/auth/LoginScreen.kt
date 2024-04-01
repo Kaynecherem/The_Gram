@@ -28,17 +28,19 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.necherem.thegram.R
 import com.necherem.thegram.elements.DisplayText
 import com.necherem.thegram.elements.UserFilledButton
 import com.necherem.thegram.elements.UserInputField
 import com.necherem.thegram.elements.UserOutlineButton
+import com.necherem.thegram.view.nav.AuthNavScreen
 
 @Composable
 fun LoginScreen(
+    navController: NavController,
     modifier: Modifier = Modifier
 ){
     var userPassword by remember{ mutableStateOf("") }
@@ -120,8 +122,10 @@ fun LoginScreen(
             verticalArrangement = Arrangement.spacedBy(space = 8.dp)
         ) {
             UserOutlineButton(
-                onValueChange = { /*TODO*/ },
-                text = "Create new account",
+                onValueChange = {
+                    navController.navigate(AuthNavScreen.Register.route)
+                                },
+                text = stringResource(R.string.create_new_account),
                 textColor = MaterialTheme.colorScheme.primary,
                 modifier = modifier
                     .fillMaxWidth()
@@ -134,10 +138,4 @@ fun LoginScreen(
             )
         }
     }
-}
-
-@Preview
-@Composable
-fun LoginScreenPreview() {
-    LoginScreen()
 }

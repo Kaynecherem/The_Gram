@@ -1,6 +1,7 @@
 package com.necherem.thegram.view
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -17,6 +18,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -35,7 +37,12 @@ import com.necherem.thegram.R
 @Composable
 fun ProfileScreen() {
     Column(modifier = Modifier.fillMaxSize()) {
-        TopBar(name = "kaynecherem", modifier = Modifier.padding(10.dp))
+        TopBar(
+            name = "kaynecherem_kt",
+            modifier = Modifier
+                .padding(10.dp)
+                .background(MaterialTheme.colorScheme.background)
+        )
         Spacer(modifier = Modifier.height(4.dp))
         ProfileSection()
 
@@ -48,31 +55,32 @@ fun TopBar(
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceAround,
+        horizontalArrangement = Arrangement.SpaceBetween,
         modifier = modifier.fillMaxWidth()
     ) {
         Icon(
             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
             contentDescription = "Back",
-            tint = Color.Black,
+            tint = MaterialTheme.colorScheme.onBackground,
             modifier = Modifier.size(24.dp)
         )
         Text(
             text = name,
             overflow = TextOverflow.Ellipsis,
             fontWeight = FontWeight.Bold,
-            fontSize = 20.sp
+            fontSize = 20.sp,
+            color = MaterialTheme.colorScheme.onBackground
         )
         Icon(
             painter = painterResource(id = R.drawable.ic_bell),
             contentDescription = "Back",
-            tint = Color.Black,
+            tint = MaterialTheme.colorScheme.onBackground,
             modifier = Modifier.size(24.dp)
         )
         Icon(
             painter = painterResource(id = R.drawable.ic_dot_menu),
             contentDescription = "Back",
-            tint = Color.Black,
+            tint = MaterialTheme.colorScheme.onBackground,
             modifier = Modifier.size(24.dp)
         )
     }
@@ -149,11 +157,24 @@ fun ProfileStat(
         Text(
             text = numberText,
             fontWeight = FontWeight.Bold,
-            fontSize = 20.sp
+            fontSize = 20.sp,
+            color = MaterialTheme.colorScheme.onBackground
         )
         Spacer(modifier = Modifier.height(4.dp))
         Text(
-            text = text
+            text = text,
+            color = MaterialTheme.colorScheme.onBackground
         )
     }
+}
+
+@Composable
+fun ProfileDescription(
+    displayName: String,
+    description: String,
+    url: String,
+    followedBy: List<String>,
+    otherCount: Int
+) {
+
 }
